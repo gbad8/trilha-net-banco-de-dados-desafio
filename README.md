@@ -1,91 +1,69 @@
-# DIO - Trilha .NET - Banco de Dados
-www.dio.me
+# 🎬 Banco de Dados de Filmes
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de banco de dados, da trilha .NET da DIO.
+Este projeto é uma solução containerizada para o desafio de banco de dados do **Bootcamp TIVIT & DIO**.
 
-## Contexto
-Você é responsável pelo banco de dados de um site de filmes, onde são armazenados dados sobre os filmes e seus atores. Sendo assim, foi solicitado para que você realize uma consulta no banco de dados com o objetivo de trazer alguns dados para análises.
+O objetivo é demonstrar competências em queries T-SQL complexas, orquestração de ambientes com Docker e deploy na Azure. O projeto sobe automaticamente um servidor SQL populado e uma interface gráfica moderna para gerenciamento.
 
-## Proposta
-Você precisará realizar 12 consultas ao banco de dados, cada uma retornando um tipo de informação.
-O seu banco de dados está modelado da seguinte maneira:
+## 🛠️ Tecnologias Utilizadas
 
-![Diagrama banco de dados](Imagens/diagrama.png)
+* **Azure SQL Edge:** Versão leve do SQL Server otimizada para containers (arquitetura ARM/AMD64).[¹]
+* **CloudBeaver:** Interface web para gerenciamento e visualização do banco (substituto moderno ao Adminer/SSMS).
+* **Docker Compose:** Para orquestração dos serviços.
+* **T-SQL:** Scripts de criação e população automática.
+[¹]: A Microsoft aposentou este serviço em setembro de 2025. Estou usando-o neste projeto para faciliar a utilização daqueles que forem testá-lo, tendo em vista que o SQL Server requereria mais configurações no Docker Desktop para quem for rodar em Windows.
 
-As tabelas sao descritas conforme a seguir:
+## 🚀 Pré-requisitos
 
-**Filmes**
+* [Docker](https://www.docker.com/products/docker-desktop/) instalado e rodando.
 
-Tabela responsável por armazenar informações dos filmes.
+---
 
-**Atores**
+## 🏃‍♂️ Como Executar (Passo a Passo)
 
-Tabela responsável por armazenar informações dos atores.
+Siga os passos abaixo para subir o ambiente completo na sua máquina.
 
-**Generos**
+### 1. Clone o Repositório
+```bash
+git clone https://github.com/gbad8/trilha-net-banco-de-dados-desafio.git
+```
+### 2. Suba os Containers
+Entre no repositório e execute o comando abaixo na raiz do projeto. O Docker irá baixar as imagens e configurar a rede.
+```bash
+docker compose up
+```
+Nota: Na primeira execução, o script scriptsFilmes.sql rodará automaticamente para criar o banco de dados e inserir os dados iniciais. Aguarde cerca de 10 a 20 segundos para o SQL Server inicializar completamente.
 
-Tabela responsável por armazenar os gêneros dos filmes.
+## 📊 Configurando o Acesso ao Banco (CloudBeaver)
+Por motivos de segurança e boas práticas, as configurações de usuário da interface gráfica não foram versionadas no Git. Siga os passos rápidos abaixo para conectar:
+### 1. Acessar a Interface
+Abra seu navegador e acesse:👉 http://localhost:89782.
 
-**ElencoFilme**
+### 2. Configuração Inicial (Primeiro Acesso)
+Ao abrir, você verá uma tela de boas-vindas do CloudBeaver.
+* Clique em Next.
+* Crie um usuário administrativo (ex: admin) e defina uma senha de sua preferência.
+* Clique em Finish.
 
-Tabela responsável por representar um relacionamento do tipo muitos para muitos entre filmes e atores, ou seja, um ator pode trabalhar em muitos filmes, e filmes
-podem ter muitos atores.
+### 3. Conectar ao Banco de Dados
+Agora, vamos conectar a interface ao container do banco.
+* No menu principal, clique no ícone de Tomada/Plug (New Connection) ou no botão Connect.
+* Selecione a aba Manual (não use a URL JDBC).
+* Preencha com as credenciais do projeto:
 
-**FilmesGenero**
+| Campo | Valor |
+| :--- | :--- |
+| **Host** | `db-sql-challange` |
+| **Port** | `1433` |
+| **Database** | `master` |
+| **Username** | `sa` |
+| **Password** | `Tivit&DioDesafio123!` |
 
-Tabela responsável por representar um relacionamento do tipo muitos para muitos entre filmes e gêneros, ou seja, um filme pode ter mais de um gênero, e um genêro pode fazer parte de muitos filmes.
+### 4. Clique em Test Connection
+O sistema verificará a comunicação entre os containers. Aguarde a mensagem de sucesso (geralmente um pop-up verde indicando "Connected").
 
-## Preparando o banco de dados
-Você deverá executar o arquivo **Script Filmes.sql** em seu banco de dados SQL Server, presente na pasta Scripts deste repositório ([ou clique aqui](Script%20Filmes.sql)). Esse script irá criar um banco chamado **Filmes**, contendo as tabelas e os dados necessários para você realizar este desafio.
+### 5. Clique em Create
+A nova conexão aparecerá no menu lateral "Database Navigator", pronta para ser explorada.
 
-## Objetivo
-Você deverá criar diversas consultas, com o objetivo de retornar os dados a seguir. Abaixo de cada pedido tem o retorno esperado. O seu retorno deve ser igual ao da imagem.
-
-## 1 - Buscar o nome e ano dos filmes
-
-![Exercicio 1](Imagens/1.png)
-
-## 2 - Buscar o nome e ano dos filmes, ordenados por ordem crescente pelo ano
-
-![Exercicio 2](Imagens/2.png)
-
-## 3 - Buscar pelo filme de volta para o futuro, trazendo o nome, ano e a duração
-
-![Exercicio 3](Imagens/3.png)
-
-## 4 - Buscar os filmes lançados em 1997
-
-![Exercicio 4](Imagens/4.png)
-
-## 5 - Buscar os filmes lançados APÓS o ano 2000
-
-![Exercicio 5](Imagens/5.png)
-
-## 6 - Buscar os filmes com a duracao maior que 100 e menor que 150, ordenando pela duracao em ordem crescente
-
-![Exercicio 6](Imagens/6.png)
-
-## 7 - Buscar a quantidade de filmes lançadas no ano, agrupando por ano, ordenando pela duracao em ordem decrescente
-
-![Exercicio 7](Imagens/7.png)
-
-## 8 - Buscar os Atores do gênero masculino, retornando o PrimeiroNome, UltimoNome
-
-![Exercicio 8](Imagens/8.png)
-
-## 9 - Buscar os Atores do gênero feminino, retornando o PrimeiroNome, UltimoNome, e ordenando pelo PrimeiroNome
-
-![Exercicio 9](Imagens/9.png)
-
-## 10 - Buscar o nome do filme e o gênero
-
-![Exercicio 10](Imagens/10.png)
-
-## 11 - Buscar o nome do filme e o gênero do tipo "Mistério"
-
-![Exercicio 11](Imagens/11.png)
-
-## 12 - Buscar o nome do filme e os atores, trazendo o PrimeiroNome, UltimoNome e seu Papel
-
-![Exercicio 12](Imagens/12.png)
+---
+## 🤝 Contribuição e Feedback
+Projeto desenvolvido como parte da trilha de aprendizado da DIO. Sugestões são bem-vindas!
