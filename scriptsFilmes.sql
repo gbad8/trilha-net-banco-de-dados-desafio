@@ -1,4 +1,4 @@
-CREATE DATABASE [Filmes]
+﻿CREATE DATABASE [Filmes]
 ;
 USE [Filmes]
 ;
