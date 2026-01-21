@@ -1,0 +1,16 @@
+# SQL Server data files - não versionar dados binários
+sql_data/
+beaver_data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log

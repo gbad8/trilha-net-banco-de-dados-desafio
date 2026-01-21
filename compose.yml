@@ -4,6 +4,7 @@ services:
   db-sql-challange:
     image: mcr.microsoft.com/azure-sql-edge:latest
     container_name: desafio-db
+    user: root
     cap_add:
       - SYS_PTRACE
     environment:
@@ -13,15 +14,18 @@ services:
       - "1433:1433"
     volumes:
       - ./scriptsFilmes.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./sql_data:/var/opt/mssql/data
     networks:
       - dio-sql-training
   
-  adminer:
-    image: adminer
-    container_name: desafio-adminer
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:latest
+    container_name: desafio-beaver
     restart: always
     ports:
-      - "8080:8080"
+      - "8978:8978"
+    volumes:
+      - ./beaver_data:/opt/cloudbeaver/workspace
     networks:
       - dio-sql-training
 
