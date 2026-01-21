@@ -4,6 +4,11 @@ Este projeto é uma solução containerizada para o desafio de banco de dados do
 
 O objetivo é demonstrar competências em queries T-SQL complexas, orquestração de ambientes com Docker e deploy na Azure. O projeto sobe automaticamente um servidor SQL populado e uma interface gráfica moderna para gerenciamento.
 
+**Implementação no Azure SQL Database:**
+
+<img width="1366" height="768" alt="screenshot-2026-01-21_15-14-14" src="https://github.com/user-attachments/assets/fabb7e97-8a30-4840-87cb-134388373634" />
+
+
 ## 🛠️ Tecnologias Utilizadas
 
 * **Azure SQL Edge:** Versão leve do SQL Server otimizada para containers (arquitetura ARM/AMD64).[¹]
