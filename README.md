@@ -17,7 +17,50 @@ O objetivo é demonstrar competências em queries T-SQL complexas, orquestraçã
 * [Docker](https://www.docker.com/products/docker-desktop/) instalado e rodando.
 
 ---
+## 🧩 Diagrama Entidade-Relacionamento (DER)
 
+Abaixo está a representação visual da estrutura do banco de dados, mostrando as tabelas, colunas e relacionamentos (Chaves Estrangeiras) definidos no script de inicialização.
+
+```mermaid
+erDiagram
+    FILMES ||--o{ ELENCOFILME : "possui"
+    ATORES ||--o{ ELENCOFILME : "interpreta"
+    FILMES ||--o{ FILMESGENERO : "classificado como"
+    GENEROS ||--o{ FILMESGENERO : "define"
+
+    FILMES {
+        int Id PK
+        varchar Nome
+        int Ano
+        int Duracao
+    }
+
+    ATORES {
+        int Id PK
+        varchar PrimeiroNome
+        varchar UltimoNome
+        varchar Genero
+    }
+
+    GENEROS {
+        int Id PK
+        varchar Genero
+    }
+
+    ELENCOFILME {
+        int Id PK
+        int IdAtor FK
+        int IdFilme FK
+        varchar Papel
+    }
+
+    FILMESGENERO {
+        int Id PK
+        int IdGenero FK
+        int IdFilme FK
+    }
+```
+---
 ## 🏃‍♂️ Como Executar (Passo a Passo)
 
 Siga os passos abaixo para subir o ambiente completo na sua máquina.
@@ -33,7 +76,7 @@ docker compose up
 ```
 Nota: Na primeira execução, o script scriptsFilmes.sql rodará automaticamente para criar o banco de dados e inserir os dados iniciais. Aguarde cerca de 10 a 20 segundos para o SQL Server inicializar completamente.
 
-## 📊 Configurando o Acesso ao Banco (CloudBeaver)
+## 📊 Configurando o Acesso ao Banco Containerizado
 Por motivos de segurança e boas práticas, as configurações de usuário da interface gráfica não foram versionadas no Git. Siga os passos rápidos abaixo para conectar:
 ### 1. Acessar a Interface
 Abra seu navegador e acesse:👉 http://localhost:8978.
