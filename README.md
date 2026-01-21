@@ -36,7 +36,7 @@ Nota: Na primeira execução, o script scriptsFilmes.sql rodará automaticamente
 ## 📊 Configurando o Acesso ao Banco (CloudBeaver)
 Por motivos de segurança e boas práticas, as configurações de usuário da interface gráfica não foram versionadas no Git. Siga os passos rápidos abaixo para conectar:
 ### 1. Acessar a Interface
-Abra seu navegador e acesse:👉 http://localhost:89782.
+Abra seu navegador e acesse:👉 http://localhost:8978.
 
 ### 2. Configuração Inicial (Primeiro Acesso)
 Ao abrir, você verá uma tela de boas-vindas do CloudBeaver.
