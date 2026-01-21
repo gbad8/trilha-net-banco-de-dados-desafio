@@ -41,20 +41,21 @@ Abra seu navegador e acesse:👉 http://localhost:8978.
 ### 2. Configuração Inicial (Primeiro Acesso)
 Ao abrir, você verá uma tela de boas-vindas do CloudBeaver.
 * Clique em Next.
-* Crie um usuário administrativo (ex: admin) e defina uma senha de sua preferência.
-* Clique em Finish.
+* O sistema vai pedir para criar um Servidor. Porém, tudo já vai estar praticamente pronto. Apenas role a página para baixo e crie um usuário administrativo (ex: admin) e defina uma senha de sua preferência.
+* Clique em Finish. O sistema vai pedir para você fazer login. Entre com as credenciais cadastradas na etapa anterior. 
 
 ### 3. Conectar ao Banco de Dados
 Agora, vamos conectar a interface ao container do banco.
-* No menu principal, clique no ícone de Tomada/Plug (New Connection) ou no botão Connect.
+* No menu principal, clique no ícone de Banco de Dados (New Connection).
+* Selecione o tipo de Banco, no nosso caso: SQL Server.
 * Selecione a aba Manual (não use a URL JDBC).
 * Preencha com as credenciais do projeto:
 
 | Campo | Valor |
 | :--- | :--- |
-| **Host** | `db-sql-challange` |
+| **Host** | `desafio-db` |
 | **Port** | `1433` |
-| **Database** | `master` |
+| **Database** | deixe em branco |
 | **Username** | `sa` |
 | **Password** | `Tivit&DioDesafio123!` |
 
