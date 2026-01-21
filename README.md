@@ -29,7 +29,7 @@ Abaixo está a representação visual da estrutura do banco de dados, mostrando 
 ```mermaid
 erDiagram
     FILMES ||--o{ ELENCOFILME : "possui"
-    ATORES ||--o{ ELENCOFILME : "interpreta"
+    ELENCOFILME ||--o{ ATORES : "possui"
     FILMES ||--o{ FILMESGENERO : "classificado como"
     GENEROS ||--o{ FILMESGENERO : "define"
 
